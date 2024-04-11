@@ -22,7 +22,7 @@ public class User {
     //private String[] roles;
 
     @OneToMany(mappedBy = "client")
-    private List<Order> orders = new ArrayList<Order>();
+    private List<Order> orders = new ArrayList< >();
 
     public User() {
     }
