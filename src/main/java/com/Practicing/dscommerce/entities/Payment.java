@@ -3,6 +3,7 @@ package com.Practicing.dscommerce.entities;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+
 @Entity
 @Table(name = "tb_payment")
 public class Payment {
