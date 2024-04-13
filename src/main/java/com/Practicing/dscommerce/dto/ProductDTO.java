@@ -2,7 +2,7 @@ package com.Practicing.dscommerce.dto;
 
 import com.Practicing.dscommerce.entities.Product;
 
-// DTO nao precisa de set pois é so para acesso
+// DTO nao precisa de set, pois é so para acesso
 public class ProductDTO {
 
     private Long id;
