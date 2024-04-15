@@ -1,10 +1,8 @@
 package com.Practicing.dscommerce.controllers;
 
 
-import com.Practicing.dscommerce.dto.CustomError;
 import com.Practicing.dscommerce.dto.ProductDTO;
 import com.Practicing.dscommerce.sevices.ProductService;
-import com.Practicing.dscommerce.sevices.exceptions.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.time.Instant;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/products")
