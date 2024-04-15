@@ -3,11 +3,14 @@ package com.Practicing.dscommerce.sevices;
 import com.Practicing.dscommerce.dto.ProductDTO;
 import com.Practicing.dscommerce.entities.Product;
 import com.Practicing.dscommerce.repositories.ProductRepository;
+import com.Practicing.dscommerce.sevices.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.nio.file.ReadOnlyFileSystemException;
 
 @Service
 public class ProductService {
@@ -17,7 +20,8 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductDTO findById(Long id) {
-        Product product = repository.findById(id).get();
+        Product product = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
         return new ProductDTO(product);
     }
 
@@ -52,10 +56,10 @@ public class ProductService {
         repository.deleteById(id);
     }
 
-        private void copyDtoToEntity (ProductDTO dto, Product entity){
-            entity.setName(dto.getName());
-            entity.setDescription(dto.getDescription());
-            entity.setPrice(dto.getPrice());
-            entity.setImgUrl(dto.getImgUrl());
-        }
+    private void copyDtoToEntity(ProductDTO dto, Product entity) {
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setImgUrl(dto.getImgUrl());
     }
+}
